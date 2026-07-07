@@ -91,10 +91,19 @@ A lightweight Streamlit interface is available in [app/streamlit_app.py](app/str
 - inspect MAE, RMSE, and MAPE directly in the browser
 - call the live FastAPI prediction endpoint from a form
 
+A Hugging Face Spaces-compatible entry point is also available in [app/app.py](app/app.py).
+
 Run it locally with:
 
 ```bash
 streamlit run app/streamlit_app.py
+```
+
+For Hugging Face Spaces with Docker, use:
+
+```bash
+docker build -f Dockerfile.hf -t m5-forecasting-demo .
+docker run -p 8501:8501 m5-forecasting-demo
 ```
 
 ## FastAPI backend
