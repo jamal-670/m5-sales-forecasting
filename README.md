@@ -85,9 +85,13 @@ Then open http://localhost:8501 in your browser.
 
 ## Simple frontend
 
-A lightweight Streamlit interface is available in [app/streamlit_app.py](app/streamlit_app.py). It lets you train a sample XGBoost model and inspect MAE, RMSE, and MAPE directly in the browser.
+A lightweight Streamlit interface is available in [app/streamlit_app.py](app/streamlit_app.py). It lets you:
 
-You can also run it locally with:
+- train a sample XGBoost model
+- inspect MAE, RMSE, and MAPE directly in the browser
+- call the live FastAPI prediction endpoint from a form
+
+Run it locally with:
 
 ```bash
 streamlit run app/streamlit_app.py
@@ -106,23 +110,30 @@ Run it locally with:
 uvicorn app.api:app --host 0.0.0.0 --port 8000
 ```
 
-## Railway deployment
+## Free-hosting deployment
 
-This project is ready for Railway deployment using the provided [Dockerfile](Dockerfile) and [railway.toml](railway.toml).
+This project is now set up for free-friendly deployment using the FastAPI service as the main app.
 
-### Steps
+### Render deployment
+
+Use [render.yaml](render.yaml) and [runtime.txt](runtime.txt) to deploy on Render for free.
 
 1. Push the repository to GitHub.
-2. Open Railway and create a new project from the GitHub repo.
-3. Railway will detect the Dockerfile and build the app automatically.
-4. The service will expose:
-   - Streamlit on port 8501
-   - FastAPI on port 8000
-
-If Railway asks for a start command, use:
+2. Create a new Render web service from the repo.
+3. Render will detect [render.yaml](render.yaml) and start the app with:
 
 ```bash
-sh -c "uvicorn app.api:app --host 0.0.0.0 --port 8000 & streamlit run app/streamlit_app.py --server.address=0.0.0.0 --server.port=8501"
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+The root URL will show a simple landing page, and the API will be available under /api.
+
+### Local optional UI
+
+If you want to run the Streamlit demo locally, use:
+
+```bash
+streamlit run app/streamlit_app.py
 ```
 
 ## Notes
