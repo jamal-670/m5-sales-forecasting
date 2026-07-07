@@ -103,7 +103,7 @@ For Hugging Face Spaces with Docker, use:
 
 ```bash
 docker build -f Dockerfile.hf -t m5-forecasting-demo .
-docker run -p 8501:8501 m5-forecasting-demo
+docker run -p 7860:7860 m5-forecasting-demo
 ```
 
 ## FastAPI backend

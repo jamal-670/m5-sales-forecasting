@@ -11,5 +11,5 @@ This repository is prepared for deployment on Hugging Face Spaces using Docker.
 1. Create a new Space.
 2. Choose Docker as the SDK.
 3. Upload this repository or connect it to GitHub.
-4. Set the container port to 8501.
+4. Set the container port to 7860.
 5. Use Dockerfile.hf as the Dockerfile.
