@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
@@ -50,3 +52,29 @@ def get_callbacks():
     )
 
     return [early_stopping]
+
+
+def save_lstm_model(model, path):
+    """
+    Save a trained LSTM model to disk.
+    """
+    if model is None:
+        raise ValueError("A trained model is required for saving.")
+
+    save_path = Path(path)
+    save_path.parent.mkdir(parents=True, exist_ok=True)
+    model.save(str(save_path))
+    return save_path
+
+
+def load_lstm_model(path):
+    """
+    Load a saved LSTM model from disk.
+    """
+    from tensorflow.keras.models import load_model
+
+    load_path = Path(path)
+    if not load_path.exists():
+        raise FileNotFoundError(f"Model file not found: {load_path}")
+
+    return load_model(str(load_path))

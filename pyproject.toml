@@ -15,6 +15,10 @@ dependencies = [
     "matplotlib",
     "scikit-learn",
     "jupyter",
+    "xgboost",
+    "streamlit",
+    "fastapi",
+    "uvicorn",
 ]
 
 [tool.setuptools]
