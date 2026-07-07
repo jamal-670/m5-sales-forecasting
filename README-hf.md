@@ -1,17 +1,15 @@
 # M5 Forecasting Demo
 
-This repository is prepared for deployment on Hugging Face Spaces using Docker.
+This repository is prepared for deployment on Hugging Face Spaces as a Streamlit app.
 
 ## Files
-- app/app.py: Streamlit entry point
-- app.py: root-level entry point for Hugging Face Spaces
-- Dockerfile.hf: Docker image for the Space
-- requirements-hf.txt: dependencies
+- streamlit_app.py: Streamlit entry point
+- requirements-streamlit.txt: dependencies
+- app.py: simple root-level compatibility entry point
 
 ## Deploy on Hugging Face Spaces
 1. Create a new Space.
-2. Choose Docker as the SDK.
+2. Choose Streamlit as the SDK.
 3. Upload this repository or connect it to GitHub.
-4. Set the container port to 7860.
-5. Use Dockerfile.hf as the Dockerfile.
-6. Ensure the repository includes both app.py and app/app.py.
+4. Set the app file to streamlit_app.py.
+5. Install dependencies from requirements-streamlit.txt.
